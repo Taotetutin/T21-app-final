@@ -1,0 +1,49 @@
+[plugin:vite:esbuild] Transform failed with 4 errors:
+/home/runner/workspace/src/utils/riskCalculators.ts:173:16: ERROR: Multiple exports with the same name "calculateFirstTrimesterRisk"
+/home/runner/workspace/src/utils/riskCalculators.ts:173:16: ERROR: The symbol "calculateFirstTrimesterRisk" has already been declared
+/home/runner/workspace/src/utils/riskCalculators.ts:214:16: ERROR: Multiple exports with the same name "calculateSecondTrimesterRisk"
+/home/runner/workspace/src/utils/riskCalculators.ts:214:16: ERROR: The symbol "calculateSecondTrimesterRisk" has already been declared
+/home/runner/workspace/src/utils/riskCalculators.ts:173:16
+Multiple exports with the same name "calculateFirstTrimesterRisk"
+171|  
+172|  // First trimester risk calculation
+173|  export function calculateFirstTrimesterRisk(
+   |                  ^
+174|    baselineRisk: number,
+175|    nuchalTranslucency: number,
+
+The symbol "calculateFirstTrimesterRisk" has already been declared
+171|  
+172|  // First trimester risk calculation
+173|  export function calculateFirstTrimesterRisk(
+   |                  ^
+174|    baselineRisk: number,
+175|    nuchalTranslucency: number,
+
+Multiple exports with the same name "calculateSecondTrimesterRisk"
+212|  
+213|  // Second trimester risk calculation
+214|  export function calculateSecondTrimesterRisk(
+   |                  ^
+215|    baselineRisk: number,
+216|    afp: number = 0,
+
+The symbol "calculateSecondTrimesterRisk" has already been declared
+212|  
+213|  // Second trimester risk calculation
+214|  export function calculateSecondTrimesterRisk(
+   |                  ^
+215|    baselineRisk: number,
+216|    afp: number = 0,
+    at failureErrorWithLog (/home/runner/workspace/node_modules/esbuild/lib/main.js:1472:15)
+    at /home/runner/workspace/node_modules/esbuild/lib/main.js:755:50
+    at responseCallbacks.<computed> (/home/runner/workspace/node_modules/esbuild/lib/main.js:622:9)
+    at handleIncomingPacket (/home/runner/workspace/node_modules/esbuild/lib/main.js:677:12)
+    at Socket.readFromStdout (/home/runner/workspace/node_modules/esbuild/lib/main.js:600:7)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:191:23
+Click outside, press Esc key, or fix the code to dismiss.
+You can also disable this overlay by setting server.hmr.overlay to false in vite.config.ts.
