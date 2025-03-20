@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Calendar, Stethoscope, Heart } from 'lucide-react';
 import RiskDisplay from './RiskDisplay';
@@ -19,7 +18,7 @@ export default function FirstTrimesterCalculator() {
     tricuspidRegurgitation: 'normal',
     ductusVenosus: 'normal'
   });
-  
+
   const [risk, setRisk] = useState<number | null>(null);
 
   const calculateRisk = () => {
@@ -32,20 +31,18 @@ export default function FirstTrimesterCalculator() {
     let baseRisk = 1 / parseInt(markers.screeningBaseRisk);
     let likelihoodRatio = 1;
 
-    // Aplicar LHR para hueso nasal según fetalmedicine.org y appsjuan.shinyapps.io
-    if (markers.nasalBone === 'absent') {
-      likelihoodRatio *= 48.5; // LR+ para hueso nasal ausente
-    } else if (markers.nasalBone === 'hypoplastic') {
-      likelihoodRatio *= 27.3; // LR+ para hueso nasal hipoplásico
+    // Aplicar LHR para hueso nasal
+    if (markers.nasalBone === 'absent' || markers.nasalBone === 'hypoplastic') {
+      likelihoodRatio *= 3.91; // LR+ para hueso nasal ausente o hipoplásico
     } else {
-      likelihoodRatio *= 0.45; // LR- para hueso nasal normal
+      likelihoodRatio *= 0.27; // LR- para hueso nasal normal
     }
 
     // Aplicar LHR para regurgitación tricúspide
     if (markers.tricuspidRegurgitation === 'abnormal') {
-      likelihoodRatio *= 55.9; // LR+ para RT anormal
+      likelihoodRatio *= 7.94; // LR+ para RT anormal
     } else {
-      likelihoodRatio *= 0.62; // LR- para RT normal
+      likelihoodRatio *= 0.63; // LR- para RT normal
     }
 
     // Aplicar LHR para ductus venoso
@@ -61,7 +58,7 @@ export default function FirstTrimesterCalculator() {
   };
 
   // Eliminado el useEffect que calculaba automáticamente
-  
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     calculateRisk();
@@ -69,7 +66,7 @@ export default function FirstTrimesterCalculator() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
-    
+
     if (type === 'checkbox') {
       const checkbox = e.target as HTMLInputElement;
       setMarkers({ ...markers, [name]: checkbox.checked });
@@ -132,15 +129,16 @@ export default function FirstTrimesterCalculator() {
               >
                 <option value="normal">Presente</option>
                 <option value="absent">Ausente</option>
+                <option value="hypoplastic">Hipoplásico</option>
               </select>
               <p className="text-xs text-gray-500 mt-1">
-                LR+: 48.5 (ausente), LR-: 0.45 (presente)
+                LR+: 3.91 (ausente/hipoplásico), LR-: 0.27 (normal)
               </p>
             </div>
 
             <div>
               <label className="block text-sm font-medium text-blue-800 mb-1">
-                Regurgitación Tricúspide
+                Regurgitación Tricuspídea
               </label>
               <select
                 name="tricuspidRegurgitation"
@@ -152,7 +150,7 @@ export default function FirstTrimesterCalculator() {
                 <option value="abnormal">Anormal</option>
               </select>
               <p className="text-xs text-gray-500 mt-1">
-                LR+: 55.9 (anormal), LR-: 0.62 (normal)
+                LR+: 7.94 (anormal), LR-: 0.63 (normal)
               </p>
             </div>
 
@@ -170,7 +168,7 @@ export default function FirstTrimesterCalculator() {
                 <option value="abnormal">Anormal</option>
               </select>
               <p className="text-xs text-gray-500 mt-1">
-                LR+: 21.3 (anormal), LR-: 0.70 (normal)
+                LR+: 3.36 (anormal), LR-: 0.61 (normal)
               </p>
             </div>
           </div>

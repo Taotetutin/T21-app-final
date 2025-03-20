@@ -54,11 +54,11 @@ export const calculateFirstTrimesterRisk = (markers: FirstTrimesterMarkers): num
 
   // Nasal bone adjustment
   if (markers.nasalBone === 'absent') {
-    likelihoodRatio *= 48.5;
+    likelihoodRatio *= 50.5;
   } else if (markers.nasalBone === 'hypoplastic') {
-    likelihoodRatio *= 27.3;
+    likelihoodRatio *= 30.2;
   } else {
-    likelihoodRatio *= 0.45;
+    likelihoodRatio *= 0.38;
   }
 
   // Tricuspid flow adjustment
@@ -70,9 +70,9 @@ export const calculateFirstTrimesterRisk = (markers: FirstTrimesterMarkers): num
 
   // Ductus venosus flow adjustment
   if (markers.ductusVenosus === 'abnormal') {
-    likelihoodRatio *= 21.3;
+    likelihoodRatio *= 3.36;
   } else {
-    likelihoodRatio *= 0.70;
+    likelihoodRatio *= 0.61;
   }
 
   return risk * likelihoodRatio;
@@ -99,9 +99,7 @@ export const calculateSecondTrimesterRisk = (markers: SecondTrimesterMarkers): n
   let likelihoodRatio = 1;
 
   // Nasal bone
-  if (markers.nasalBone === 'absent') {
-    likelihoodRatio *= 50.5;
-  } else if (markers.nasalBone === 'hypoplastic') {
+  if (markers.nasalBone === 'hypoplastic') {
     likelihoodRatio *= 23.27;
   } else {
     likelihoodRatio *= 0.46;
@@ -130,7 +128,7 @@ export const calculateSecondTrimesterRisk = (markers: SecondTrimesterMarkers): n
 
   // Aberrant right subclavian artery
   if (markers.aberrantSubclavian === 'present') {
-    likelihoodRatio *= 21.44;
+    likelihoodRatio *= 21.48;
   } else {
     likelihoodRatio *= 0.71;
   }
@@ -139,7 +137,7 @@ export const calculateSecondTrimesterRisk = (markers: SecondTrimesterMarkers): n
   if (markers.hyperechogenicBowel === 'present') {
     likelihoodRatio *= 11.44;
   } else {
-    likelihoodRatio *= 0.92;
+    likelihoodRatio *= 0.9;
   }
 
   // Pyelectasis (Mild hydronephrosis)

@@ -125,7 +125,7 @@ export default function SecondTrimesterCalculator() {
                 <option value="absent">Ausente</option>
               </select>
               <p className="text-xs text-gray-500 mt-1">
-                LR+: 50.5 (ausente), 30.2 (hipoplásico), LR-: 0.38 (normal)
+                LR+: 50.5 (ausente), 23.27 (hipoplásico), LR-: 0.46 (normal)
               </p>
             </div>
 
@@ -179,7 +179,7 @@ export default function SecondTrimesterCalculator() {
                 <option value="increased">Aumentado</option>
               </select>
               <p className="text-xs text-gray-500 mt-1">
-                LR+: 53.05 (aumentado), LR-: 0.46 (normal)
+                LR+: 23.3 (aumentado), LR-: 0.8 (normal)
               </p>
             </div>
 
@@ -233,7 +233,7 @@ export default function SecondTrimesterCalculator() {
                 <option value="present">Presente</option>
               </select>
               <p className="text-xs text-gray-500 mt-1">
-                LR+: 6.7 (presente), LR-: 0.93 (ausente)
+                LR+: 11.44 (presente), LR-: 0.9 (ausente)
               </p>
             </div>
 
